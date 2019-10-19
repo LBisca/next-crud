@@ -1,11 +1,13 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
-import './style.scss';
+import css from './style.scss';
 
 const Header = () => {
   return (
-    <AppBar position="static" className="header">
-      <h1 className="title">React Next CRUD</h1>
+    <AppBar position="static" className={css.header}>
+      <div className={css.wrapper}>
+        <h1 className={css.title}>React Next CRUD</h1>
+      </div>
     </AppBar>
   );
 };

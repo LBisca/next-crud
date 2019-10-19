@@ -7,6 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import PropTypes from 'prop-types';
 import { Link } from '../../routes';
 import css from './style.scss';
 
@@ -14,11 +15,14 @@ const useStyles = makeStyles({
   actionButton: {
     padding: '9px 18px',
     borderRadius: '0px'
+  },
+  tableHover: {
+    transition: '0.1s ease'
   }
 });
 
-export default function SimpleTable() {
-  const classes = useStyles();
+const DataTable = ({ data }) => {
+  const classes = useStyles({});
 
   return (
     <div className={css.wrapper}>
@@ -43,23 +47,41 @@ export default function SimpleTable() {
       <Paper>
         <Table aria-label="simple table">
           <TableBody>
-            <TableRow hover>
-              <TableCell width="auto" align="left">
-                Bisca
-              </TableCell>
-              <TableCell width="20%" align="center">
-                464.708.658.72
-              </TableCell>
-              <TableCell width="20%" align="center">
-                25/08/1995
-              </TableCell>
-              <TableCell width="20%" align="center">
-                X
-              </TableCell>
-            </TableRow>
+            {data.map(element => (
+              <TableRow
+                key={`row ${element.id}-${element.cpf}`}
+                hover
+                className={classes.tableHover}
+              >
+                <TableCell width="auto" align="left">
+                  {element.fullName}
+                </TableCell>
+                <TableCell width="20%" align="center">
+                  {element.cpf}
+                </TableCell>
+                <TableCell width="20%" align="center">
+                  {element.birthDate}
+                </TableCell>
+                <TableCell width="20%" align="center">
+                  X
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </Paper>
     </div>
   );
-}
+};
+
+DataTable.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      fullname: PropTypes.string,
+      CPF: PropTypes.string,
+      birthdate: PropTypes.string
+    })
+  ).isRequired
+};
+
+export default DataTable;

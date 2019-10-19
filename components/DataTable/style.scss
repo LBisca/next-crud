@@ -47,3 +47,14 @@
   padding: 9px 18px !important;
   border-radius: 0px !important;
 }
+
+.actionsRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 30px;
+    height: 30px;
+  }
+}

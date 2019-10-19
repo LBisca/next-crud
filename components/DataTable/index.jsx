@@ -8,6 +8,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import IconButton from '@material-ui/core/IconButton';
 import { Link } from '../../routes';
 import css from './style.scss';
 
@@ -18,6 +21,13 @@ const useStyles = makeStyles({
   },
   tableHover: {
     transition: '0.1s ease'
+  },
+  lastColumn: {
+    padding: '0px'
+  },
+  iconButton: {
+    padding: '6px',
+    margin: '5px 2px'
   }
 });
 
@@ -49,6 +59,7 @@ const DataTable = ({ data }) => {
           <TableBody>
             {data.map(element => (
               <TableRow
+                id={element.id}
                 key={`row ${element.id}-${element.cpf}`}
                 hover
                 className={classes.tableHover}
@@ -62,8 +73,19 @@ const DataTable = ({ data }) => {
                 <TableCell width="20%" align="center">
                   {element.birthDate}
                 </TableCell>
-                <TableCell width="20%" align="center">
-                  X
+                <TableCell
+                  className={classes.lastColumn}
+                  width="20%"
+                  align="center"
+                >
+                  <div className={css.actionsRow}>
+                    <IconButton className={classes.iconButton}>
+                      <EditIcon color="primary" />
+                    </IconButton>
+                    <IconButton className={classes.iconButton}>
+                      <DeleteIcon color="secondary" />
+                    </IconButton>
+                  </div>
                 </TableCell>
               </TableRow>
             ))}

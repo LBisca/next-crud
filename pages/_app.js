@@ -2,6 +2,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import App from 'next/app';
+import Header from '../components/Header';
 
 class Main extends App {
   render() {
@@ -9,6 +10,7 @@ class Main extends App {
 
     return (
       <>
+        <Header />
         <style jsx global>
           {`
             * {

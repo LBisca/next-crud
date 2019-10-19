@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -6,6 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import { Link } from '../../routes';
 import css from './style.scss';
 
 const useStyles = makeStyles({
@@ -21,13 +23,15 @@ export default function SimpleTable() {
   return (
     <div className={css.wrapper}>
       <div className={css.actionsHolder}>
-        <Button
-          variant="contained"
-          color="primary"
-          className={classes.actionButton}
-        >
-          Adicionar
-        </Button>
+        <Link route="/add" params={{ action: 'add' }}>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.actionButton}
+          >
+            Adicionar
+          </Button>
+        </Link>
       </div>
       <ul className={css.tableLabels}>
         <li>Nome</li>

@@ -1,16 +1,12 @@
-/* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/jsx-filename-extension */
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import React from 'react';
+import Document, { Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheets } from '@material-ui/styles';
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx);
-    return { ...initialProps };
-  }
-
   render() {
     return (
-      <Html>
+      <html lang="en">
         <Head>
           <meta name="author" content="Lucas Simões Bisca" />
           <meta
@@ -32,6 +28,7 @@ class MyDocument extends Document {
               box-sizing: border-box;
               margin: 0;
               padding: 0;
+              font-family: Roboto;
             }
 
             body {
@@ -43,9 +40,32 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </Html>
+      </html>
     );
   }
 }
+
+MyDocument.getInitialProps = async ctx => {
+  const sheets = new ServerStyleSheets();
+  const originalRenderPage = ctx.renderPage;
+
+  ctx.renderPage = () =>
+    originalRenderPage({
+      enhanceApp: App => props => sheets.collect(<App {...props} />)
+    });
+
+  const initialProps = await Document.getInitialProps(ctx);
+
+  return {
+    ...initialProps,
+    // Styles fragment is rendered after the app and page rendering finish.
+    styles: [
+      <React.Fragment key="styles">
+        {initialProps.styles}
+        {sheets.getStyleElement()}
+      </React.Fragment>
+    ]
+  };
+};
 
 export default MyDocument;

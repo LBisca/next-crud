@@ -1,5 +1,15 @@
 import React from 'react';
+import Head from 'next/head';
+import Header from '../components/Header';
 
-const Home = () => <div />;
+const Home = () => (
+  <div>
+    <Head>
+      <title>Home</title>
+      <meta name="description" content="CRUD home page" />
+    </Head>
+    <Header />
+  </div>
+);
 
 export default Home;

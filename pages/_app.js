@@ -9,6 +9,24 @@ class Main extends App {
 
     return (
       <>
+        <style jsx global>
+          {`
+            * {
+              box-sizing: border-box;
+              margin: 0;
+              padding: 0;
+              font-family: Roboto, sans-serif;
+            }
+
+            html {
+              background-color: #f0f0f0;
+            }
+
+            body {
+              font-size: 16px;
+            }
+          `}
+        </style>
         <Component {...pageProps} />
       </>
     );

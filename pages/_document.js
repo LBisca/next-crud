@@ -23,20 +23,7 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
         </Head>
-        <style jsx global>
-          {`
-            * {
-              box-sizing: border-box;
-              margin: 0;
-              padding: 0;
-              font-family: Roboto;
-            }
 
-            body {
-              font-size: 16px;
-            }
-          `}
-        </style>
         <body>
           <Main />
           <NextScript />

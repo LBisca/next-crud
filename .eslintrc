@@ -3,8 +3,11 @@
     "browser": true,
     "node": true
   },
+  "parser": "babel-eslint",
   "extends": ["airbnb", "plugin:prettier/recommended"],
   "rules": {
-    "prettier/prettier": ["error", { "singleQuote": true }]
+    "prettier/prettier": ["error", { "singleQuote": true }],
+    "react/state-in-constructor": [0, "never"],
+    "react/destructuring-assignment": [0, "never"]
   }
 }

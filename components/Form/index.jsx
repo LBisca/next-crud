@@ -2,6 +2,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Router from 'next/router';
 import Form from './form';
 
 class FormIndex extends Component {
@@ -22,13 +23,31 @@ class FormIndex extends Component {
 
     const values = { fullName: '', cpf: '', birthDate: '', email: '' };
 
+    const handleCloseModal = () => {
+      Router.push('/');
+    };
+
+    const generateId = () => {
+      return `${Math.random()
+        .toString(36)
+        .substr(2, 9)}`;
+    };
+
     const onSubmit = (formData, actions) => {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          console.log(formData);
-          actions.setSubmitting(false);
-          resolve(addItem(formData));
-        }, 3000);
+      // Simullating an HTTP request
+      return new Promise((resolve, reject) => {
+        const newFormData = formData;
+        newFormData.id = generateId();
+        try {
+          setTimeout(() => {
+            actions.setSubmitting(false);
+            actions.resetForm();
+            handleCloseModal();
+            resolve(addItem(newFormData));
+          }, 2000);
+        } catch (error) {
+          reject(error.message);
+        }
       });
     };
 

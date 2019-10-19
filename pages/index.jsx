@@ -16,19 +16,19 @@ class Home extends Component {
     // Store for list data
     data: [
       {
-        id: 1,
+        id: 'nf7wt6ng9',
         fullName: 'Lucas Simões Bisca',
         cpf: '46470865872',
         birthDate: '25/08/1995'
       },
       {
-        id: 2,
+        id: 'h0fgjvnlf',
         fullName: 'Antonio Benjamin Caleb Sales',
         cpf: '54725702471',
         birthDate: '06/01/2001'
       },
       {
-        id: 3,
+        id: '83lsu0u29',
         fullName: 'Sarah Louise Nunes',
         cpf: '32985098335',
         birthDate: '27/01/1976'

@@ -1,0 +1,29 @@
+# next-crud
+SSR CRUD with material-ui
+
+### Instruções
+
+1 - Clone o repositório 
+
+```
+git clone git@github.com:LBisca/next-crud.git
+cd opah
+```
+
+2 - Instale as dependências  
+
+```
+npm install
+or
+yarn install
+```
+
+3 - Rode o servidor
+
+```
+npm run dev
+or
+yarn dev
+```
+
+4 - Acesse a página em http://localhost:3000

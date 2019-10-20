@@ -25,21 +25,21 @@ class Home extends Component {
         id: 'nf7wt6ng9',
         fullName: 'Lucas Simões Bisca',
         email: 'lucas.simon.b@gmail.com',
-        cpf: '46470865872',
+        cpf: '464.708.658-72',
         birthDate: '25/08/1995'
       },
       {
         id: 'h0fgjvnlf',
         fullName: 'Beatriz Débora Liz',
         email: 'beatriz@asconnet.com.br',
-        cpf: '61609052528',
+        cpf: '772.413.383-24',
         birthDate: '23/05/1939'
       },
       {
         id: '83lsu0u29',
         fullName: 'Leonardo Ryan Giovanni',
         email: 'leonardo@danielstrauch.com',
-        cpf: '46924425658',
+        cpf: '469.244.256-58',
         birthDate: '12/07/1964'
       }
     ]

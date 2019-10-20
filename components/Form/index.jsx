@@ -17,7 +17,7 @@ class FormIndex extends Component {
       cpf: Yup.string().required('Este campo é obrigatório'),
       birthDate: Yup.string().required('Este campo é obrigatório'),
       email: Yup.string()
-        .email()
+        .email('Email inválido!')
         .required('Este campo é obrigatório')
     });
 

@@ -47,69 +47,72 @@ const DataTable = ({ data }) => {
           </Button>
         </Link>
       </div>
-      <ul className={css.tableLabels}>
-        <li>Nome</li>
-        <li>Email</li>
-        <li>CPF</li>
-        <li>Data de Nascimento</li>
-        <li>Ações</li>
-      </ul>
 
-      <Paper>
-        <Table aria-label="simple table">
-          <TableBody>
-            {data.map(element => (
-              <TableRow
-                id={element.id}
-                key={`row ${element.id}-${element.cpf}`}
-                hover
-                className={classes.tableHover}
-              >
-                <TableCell width="25%" align="left">
-                  {element.fullName}
-                </TableCell>
-                <TableCell width="auto" align="center">
-                  {element.email}
-                </TableCell>
-                <TableCell width="20%" align="center">
-                  {element.cpf}
-                </TableCell>
-                <TableCell width="20%" align="center">
-                  {element.birthDate}
-                </TableCell>
-                <TableCell
-                  className={classes.lastColumn}
-                  width="10%"
-                  align="center"
+      <div className={css.scroller}>
+        <ul className={`${css.tableLabels} ${css.mobileTable}`}>
+          <li>Nome</li>
+          <li>Email</li>
+          <li>CPF</li>
+          <li>Data de Nascimento</li>
+          <li>Ações</li>
+        </ul>
+
+        <Paper className={css.mobileTable}>
+          <Table aria-label="simple table">
+            <TableBody>
+              {data.map(element => (
+                <TableRow
+                  id={element.id}
+                  key={`row ${element.id}-${element.cpf}`}
+                  hover
+                  className={classes.tableHover}
                 >
-                  <div className={css.actionsRow}>
-                    <Link
-                      route={`/edit/${element.id}`}
-                      params={{ action: 'edit', id: element.id }}
-                    >
-                      <IconButton
-                        className={`${classes.iconButton} ${css.editIcon}`}
+                  <TableCell width="25%" align="left">
+                    {element.fullName}
+                  </TableCell>
+                  <TableCell width="auto" align="center">
+                    {element.email}
+                  </TableCell>
+                  <TableCell width="20%" align="center">
+                    {element.cpf}
+                  </TableCell>
+                  <TableCell width="20%" align="center">
+                    {element.birthDate}
+                  </TableCell>
+                  <TableCell
+                    className={classes.lastColumn}
+                    width="10%"
+                    align="center"
+                  >
+                    <div className={css.actionsRow}>
+                      <Link
+                        route={`/edit/${element.id}`}
+                        params={{ action: 'edit', id: element.id }}
                       >
-                        <EditIcon color="primary" />
-                      </IconButton>
-                    </Link>
-                    <Link
-                      route={`/remove/${element.id}`}
-                      params={{ action: 'remove', id: element.id }}
-                    >
-                      <IconButton
-                        className={`${classes.iconButton} ${css.deleteIcon}`}
+                        <IconButton
+                          className={`${classes.iconButton} ${css.editIcon}`}
+                        >
+                          <EditIcon color="primary" />
+                        </IconButton>
+                      </Link>
+                      <Link
+                        route={`/remove/${element.id}`}
+                        params={{ action: 'remove', id: element.id }}
                       >
-                        <DeleteIcon color="secondary" />
-                      </IconButton>
-                    </Link>
-                  </div>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </Paper>
+                        <IconButton
+                          className={`${classes.iconButton} ${css.deleteIcon}`}
+                        >
+                          <DeleteIcon color="secondary" />
+                        </IconButton>
+                      </Link>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Paper>
+      </div>
     </div>
   );
 };

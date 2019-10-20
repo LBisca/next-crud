@@ -42,18 +42,16 @@ const Modal = ({ query, addItem, editItem, getItem }) => {
   });
 
   return (
-    <div>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>{getTitle()}</DialogTitle>
-        <DialogContent>
-          <Form
-            addItem={addItem}
-            editItem={editItem}
-            selectedItem={selectedItem}
-          />
-        </DialogContent>
-      </Dialog>
-    </div>
+    <Dialog open={open} onClose={handleClose}>
+      <DialogTitle>{getTitle()}</DialogTitle>
+      <DialogContent>
+        <Form
+          addItem={addItem}
+          editItem={editItem}
+          selectedItem={selectedItem}
+        />
+      </DialogContent>
+    </Dialog>
   );
 };
 

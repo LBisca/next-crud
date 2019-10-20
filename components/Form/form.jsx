@@ -38,7 +38,7 @@ const Form = ({
         <div className={css.formRow}>
           <FormControl
             error={errors.fullName && touched.fullName}
-            className={classes.formControl}
+            className={css.formControl}
           >
             <InputLabel>Nome</InputLabel>
             <Input
@@ -53,7 +53,7 @@ const Form = ({
           </FormControl>
           <FormControl
             error={errors.email && touched.email}
-            className={classes.formControl}
+            className={css.formControl}
           >
             <InputLabel>Email</InputLabel>
             <Input
@@ -71,7 +71,7 @@ const Form = ({
         <div className={css.formRow}>
           <FormControl
             error={errors.cpf && touched.cpf}
-            className={classes.formControl}
+            className={css.formControl}
           >
             <InputLabel>CPF</InputLabel>
             <InputMask
@@ -89,7 +89,7 @@ const Form = ({
           </FormControl>
           <FormControl
             error={errors.birthDate && touched.birthDate}
-            className={classes.formControl}
+            className={css.formControl}
           >
             <InputLabel>Data de nascimento</InputLabel>
             <InputMask

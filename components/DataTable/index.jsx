@@ -49,6 +49,7 @@ const DataTable = ({ data }) => {
       </div>
       <ul className={css.tableLabels}>
         <li>Nome</li>
+        <li>Email</li>
         <li>CPF</li>
         <li>Data de Nascimento</li>
         <li>Ações</li>
@@ -64,8 +65,11 @@ const DataTable = ({ data }) => {
                 hover
                 className={classes.tableHover}
               >
-                <TableCell width="auto" align="left">
+                <TableCell width="25%" align="left">
                   {element.fullName}
+                </TableCell>
+                <TableCell width="auto" align="center">
+                  {element.email}
                 </TableCell>
                 <TableCell width="20%" align="center">
                   {element.cpf}
@@ -75,7 +79,7 @@ const DataTable = ({ data }) => {
                 </TableCell>
                 <TableCell
                   className={classes.lastColumn}
-                  width="20%"
+                  width="10%"
                   align="center"
                 >
                   <div className={css.actionsRow}>
@@ -83,7 +87,9 @@ const DataTable = ({ data }) => {
                       route={`/edit/${element.id}`}
                       params={{ action: 'edit', id: element.id }}
                     >
-                      <IconButton className={classes.iconButton}>
+                      <IconButton
+                        className={`${classes.iconButton} ${css.editIcon}`}
+                      >
                         <EditIcon color="primary" />
                       </IconButton>
                     </Link>
@@ -91,7 +97,9 @@ const DataTable = ({ data }) => {
                       route={`/remove/${element.id}`}
                       params={{ action: 'remove', id: element.id }}
                     >
-                      <IconButton className={classes.iconButton}>
+                      <IconButton
+                        className={`${classes.iconButton} ${css.deleteIcon}`}
+                      >
                         <DeleteIcon color="secondary" />
                       </IconButton>
                     </Link>

@@ -10,7 +10,7 @@
   display: grid;
   font-size: 0.82rem;
   font-weight: 500;
-  grid-template-columns: auto 20% 20% 20%;
+  grid-template-columns: 25% auto 20% 20% 10%;
   list-style: none;
   padding: 0px;
   height: 60px;
@@ -56,5 +56,49 @@
   svg {
     width: 30px;
     height: 30px;
+  }
+}
+
+.deleteIcon {
+  &::before {
+    content: "Remover";
+    color: #fff;
+    position: absolute;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-weight: 500;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: -20px;
+    font-size: 0.8rem;
+    transition: 0.2s ease-in-out;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.editIcon {
+  &::before {
+    content: "Editar";
+    color: #fff;
+    position: absolute;
+    padding: 2px 4px;
+    font-weight: 500;
+    border-radius: 4px;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: -18px;
+    font-size: 0.8rem;
+    transition: 0.2s ease-in-out;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
   }
 }

@@ -79,12 +79,22 @@ const DataTable = ({ data }) => {
                   align="center"
                 >
                   <div className={css.actionsRow}>
-                    <IconButton className={classes.iconButton}>
-                      <EditIcon color="primary" />
-                    </IconButton>
-                    <IconButton className={classes.iconButton}>
-                      <DeleteIcon color="secondary" />
-                    </IconButton>
+                    <Link
+                      route={`/edit/${element.id}`}
+                      params={{ action: 'edit', id: element.id }}
+                    >
+                      <IconButton className={classes.iconButton}>
+                        <EditIcon color="primary" />
+                      </IconButton>
+                    </Link>
+                    <Link
+                      route={`/remove/${element.id}`}
+                      params={{ action: 'remove', id: element.id }}
+                    >
+                      <IconButton className={classes.iconButton}>
+                        <DeleteIcon color="secondary" />
+                      </IconButton>
+                    </Link>
                   </div>
                 </TableCell>
               </TableRow>

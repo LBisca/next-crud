@@ -7,7 +7,7 @@ import Form from './form';
 
 class FormIndex extends Component {
   render() {
-    const { addItem } = this.props;
+    const { addItem, selectedItem, editItem } = this.props;
 
     const validationSchema = Yup.object().shape({
       fullName: Yup.string()
@@ -21,7 +21,20 @@ class FormIndex extends Component {
         .required('Este campo é obrigatório')
     });
 
-    const values = { fullName: '', cpf: '', birthDate: '', email: '' };
+    const getInitialValues = () => {
+      if (
+        Object.keys(selectedItem).length !== 0 &&
+        selectedItem.constructor === Object
+      ) {
+        return {
+          fullName: selectedItem.fullName,
+          cpf: selectedItem.cpf,
+          birthDate: selectedItem.birthDate,
+          email: selectedItem.email
+        };
+      }
+      return { fullName: '', cpf: '', birthDate: '', email: '' };
+    };
 
     const handleCloseModal = () => {
       Router.push('/');
@@ -36,14 +49,21 @@ class FormIndex extends Component {
     const onSubmit = (formData, actions) => {
       // Simullating an HTTP request
       return new Promise((resolve, reject) => {
-        const newFormData = formData;
-        newFormData.id = generateId();
         try {
           setTimeout(() => {
             actions.setSubmitting(false);
             actions.resetForm();
             handleCloseModal();
-            resolve(addItem(newFormData));
+
+            if (selectedItem) {
+              const newFormData = formData;
+              newFormData.id = selectedItem.id;
+              resolve(editItem(newFormData));
+            } else {
+              const newFormData = formData;
+              newFormData.id = generateId();
+              resolve(addItem(newFormData));
+            }
           }, 2000);
         } catch (error) {
           reject(error.message);
@@ -53,7 +73,7 @@ class FormIndex extends Component {
 
     return (
       <Formik
-        initialValues={values}
+        initialValues={getInitialValues()}
         onSubmit={(formData, actions) => onSubmit(formData, actions)}
         validationSchema={validationSchema}
         // eslint-disable-next-line react/jsx-props-no-spreading
@@ -63,8 +83,22 @@ class FormIndex extends Component {
   }
 }
 
+FormIndex.defaultProps = {
+  selectedItem: false
+};
+
 FormIndex.propTypes = {
-  addItem: PropTypes.func.isRequired
+  addItem: PropTypes.func.isRequired,
+  editItem: PropTypes.func.isRequired,
+  selectedItem: PropTypes.oneOfType([
+    PropTypes.shape({
+      fullName: PropTypes.string,
+      cpf: PropTypes.string,
+      email: PropTypes.string,
+      birthDate: PropTypes.string
+    }),
+    PropTypes.bool
+  ])
 };
 
 export default FormIndex;

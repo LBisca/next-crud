@@ -18,8 +18,22 @@ const useStyles = makeStyles({
   loader: { width: '25px !important', height: '25px !important' }
 });
 
+// Modal close handler
 const handleClose = () => {
   Router.pushRoute('/');
+};
+
+/**
+ * Values default propTypes
+ * @returns {Object} PropTypes from form values
+ */
+const valuePropsTypes = () => {
+  return {
+    fullName: PropTypes.string,
+    email: PropTypes.string,
+    cpf: PropTypes.string,
+    birthDate: PropTypes.string
+  };
 };
 
 const Form = ({
@@ -135,6 +149,7 @@ const Form = ({
   );
 };
 
+// PropTypes
 Form.defaultProps = {
   errors: PropTypes.object,
   touched: PropTypes.object
@@ -143,24 +158,9 @@ Form.defaultProps = {
 Form.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  values: PropTypes.shape({
-    fullName: PropTypes.string,
-    email: PropTypes.string,
-    cpf: PropTypes.string,
-    birthDate: PropTypes.string
-  }).isRequired,
-  errors: PropTypes.shape({
-    fullName: PropTypes.string,
-    email: PropTypes.string,
-    cpf: PropTypes.string,
-    birthDate: PropTypes.string
-  }),
-  touched: PropTypes.shape({
-    fullName: PropTypes.bool,
-    email: PropTypes.bool,
-    cpf: PropTypes.bool,
-    birthDate: PropTypes.bool
-  }),
+  values: PropTypes.shape(valuePropsTypes()).isRequired,
+  errors: PropTypes.shape(valuePropsTypes()),
+  touched: PropTypes.shape(valuePropsTypes()),
   isSubmitting: PropTypes.bool.isRequired
 };
 

@@ -17,6 +17,9 @@ const MiniModal = ({ query, removeItem, getItem }) => {
   const [open, setOpen] = useState(false);
   const [loader, setLoader] = useState(false);
 
+  /**
+   * Open modal based on router
+   */
   useEffect(() => {
     if (query.action && query.action === 'remove') {
       setOpen(true);
@@ -25,6 +28,9 @@ const MiniModal = ({ query, removeItem, getItem }) => {
     }
   });
 
+  /**
+   * Mount modal text
+   */
   const modalDialog = () => {
     const name = getItem(query.id).fullName;
 

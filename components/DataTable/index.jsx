@@ -121,6 +121,7 @@ DataTable.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       fullname: PropTypes.string,
+      email: PropTypes.string,
       CPF: PropTypes.string,
       birthdate: PropTypes.string
     })

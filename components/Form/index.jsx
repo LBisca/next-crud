@@ -29,6 +29,15 @@ class FormIndex extends Component {
         .required('Este campo é obrigatório')
     });
 
+    // Modal close handler
+    const handleCloseModal = () => {
+      Router.push('/');
+    };
+
+    /**
+     * Get person's data if editing
+     * @returns {Object} Selected person's data or empty values
+     */
     const getInitialValues = () => {
       if (
         Object.keys(selectedItem).length !== 0 &&
@@ -44,16 +53,22 @@ class FormIndex extends Component {
       return { fullName: '', cpf: '', birthDate: '', email: '' };
     };
 
-    const handleCloseModal = () => {
-      Router.push('/');
-    };
-
+    /**
+     * Generate unique hash
+     * @returns {String} Unique hash intended for person id
+     */
     const generateId = () => {
       return `${Math.random()
         .toString(36)
         .substr(2, 9)}`;
     };
 
+    /**
+     * Submit form for editing and adding
+     * @param {Object} formData Values submited on the form
+     * @param {Object} actions Formik useful actions
+     * @returns {Promise}
+     */
     const onSubmit = (formData, actions) => {
       // Simullating an HTTP request
       return new Promise((resolve, reject) => {

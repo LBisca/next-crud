@@ -17,6 +17,10 @@ const Modal = ({ query, addItem, editItem, getItem }) => {
     Router.pushRoute('/');
   };
 
+  /**
+   * Get modal title from slug
+   * @returns {String} Modal title
+   */
   const getTitle = () => {
     switch (query.action) {
       case 'add':
@@ -28,6 +32,9 @@ const Modal = ({ query, addItem, editItem, getItem }) => {
     }
   };
 
+  /**
+   * Open modal based on router
+   */
   useEffect(() => {
     if (query.action && (query.action === 'add' || query.action === 'edit')) {
       setOpen(true);

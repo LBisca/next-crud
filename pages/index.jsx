@@ -60,7 +60,7 @@ class Home extends Component {
 
   /**
    * Add a person on the list.
-   * @param {Object} item Object populated with person's data
+   * @param {Object} item Object with person's data
    */
   addItem = item => {
     this.setState(prevState => ({
@@ -70,7 +70,7 @@ class Home extends Component {
 
   /**
    * Edit selected person on the list.
-   * @param {Object} item Object populated with person's data
+   * @param {Object} item Object with person's data
    */
   editItem = item => {
     const itemIndex = this.state.data.findIndex(
@@ -86,7 +86,7 @@ class Home extends Component {
   };
 
   /**
-   * Remove selceted person on the list.
+   * Remove selected person on the list.
    * @param {String} itemId hash id for finding selected person
    */
   removeItem = itemId => {

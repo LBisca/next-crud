@@ -3,6 +3,7 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import DataTable from '../components/DataTable';
 import Modal from '../components/Modal';
+import MiniModal from '../components/MiniModal';
 
 class Home extends Component {
   static getInitialProps({ res, query }) {
@@ -29,24 +30,24 @@ class Home extends Component {
       },
       {
         id: 'h0fgjvnlf',
-        fullName: 'Antonio Benjamin Sales',
-        email: 'lucas.simon.b@gmail.com',
-        cpf: '54725702471',
-        birthDate: '06/01/2001'
+        fullName: 'Beatriz Débora Liz',
+        email: 'beatriz@asconnet.com.br',
+        cpf: '61609052528',
+        birthDate: '23/05/1939'
       },
       {
         id: '83lsu0u29',
-        fullName: 'Sarah Louise Nunes',
-        email: 'lucas.simon.b@gmail.com',
-        cpf: '32985098335',
-        birthDate: '27/01/1976'
+        fullName: 'Leonardo Ryan Giovanni',
+        email: 'leonardo@danielstrauch.com',
+        cpf: '46924425658',
+        birthDate: '12/07/1964'
       }
     ]
   };
 
   /**
    * Gets the person object on the list.
-   * @param {String} itemId hash Id for finding selected person
+   * @param {String} itemId hash id for finding selected person
    * @returns {Object} person's data
    */
   getItem = itemId => {
@@ -68,7 +69,7 @@ class Home extends Component {
   };
 
   /**
-   * Edit selceted person on the list.
+   * Edit selected person on the list.
    * @param {Object} item Object populated with person's data
    */
   editItem = item => {
@@ -84,16 +85,28 @@ class Home extends Component {
     this.setState({ data: newData });
   };
 
+  /**
+   * Remove selceted person on the list.
+   * @param {String} itemId hash id for finding selected person
+   */
   removeItem = itemId => {
-    const itemIndex = this.state.data.findIndex(
-      element => element.id === itemId
-    );
-
-    // eslint-disable-next-line react/no-access-state-in-setstate
-    const newData = [...this.state.data];
-    newData.splice(itemIndex, 1);
-
-    this.setState(newData);
+    return new Promise((resolve, reject) => {
+      try {
+        const itemIndex = this.state.data.findIndex(
+          element => element.id === itemId
+        );
+        // eslint-disable-next-line react/no-access-state-in-setstate
+        const newData = [...this.state.data];
+        newData.splice(itemIndex, 1);
+        // Simullating HTTP request timeout
+        setTimeout(() => {
+          this.setState({ data: newData });
+          resolve(true);
+        }, 2000);
+      } catch (error) {
+        reject(error);
+      }
+    });
   };
 
   render() {
@@ -102,9 +115,14 @@ class Home extends Component {
     return (
       <div>
         <Head>
-          <title>Home</title>
+          <title>CRUD</title>
           <meta name="description" content="CRUD home page" />
         </Head>
+        <MiniModal
+          query={query}
+          removeItem={this.removeItem}
+          getItem={this.getItem}
+        />
         <Modal
           query={query}
           addItem={this.addItem}

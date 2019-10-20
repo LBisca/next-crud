@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import App from 'next/app';
-import Head from 'next/head';
+import Header from '../components/Header';
 
 class Main extends App {
   render() {
@@ -10,22 +10,25 @@ class Main extends App {
 
     return (
       <>
-        <Head>
-          <title>Opah Test</title>
-          <meta
-            name="description"
-            content="A simple test for Opah job application"
-          />
-          <meta name="author" content="Lucas Simões Bisca" />
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-          />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
-        </Head>
+        <Header />
+        <style jsx global>
+          {`
+            * {
+              box-sizing: border-box;
+              margin: 0;
+              padding: 0;
+              font-family: Roboto, sans-serif;
+            }
+
+            html {
+              background-color: #f0f0f0;
+            }
+
+            body {
+              font-size: 16px;
+            }
+          `}
+        </style>
         <Component {...pageProps} />
       </>
     );

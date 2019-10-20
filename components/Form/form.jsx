@@ -160,7 +160,12 @@ Form.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   values: PropTypes.shape(valuePropsTypes()).isRequired,
   errors: PropTypes.shape(valuePropsTypes()),
-  touched: PropTypes.shape(valuePropsTypes()),
+  touched: PropTypes.shape({
+    fullName: PropTypes.bool,
+    email: PropTypes.bool,
+    cpf: PropTypes.bool,
+    birthDate: PropTypes.bool
+  }),
   isSubmitting: PropTypes.bool.isRequired
 };
 

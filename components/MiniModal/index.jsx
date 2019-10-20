@@ -28,7 +28,7 @@ const MiniModal = ({ query, removeItem, getItem }) => {
   const modalDialog = () => {
     const name = getItem(query.id).fullName;
 
-    return `Tem certeza que deseja excluir ${name}?`;
+    return `Tem certeza que deseja excluir ${name || ' '}?`;
   };
 
   const handleClose = () => {

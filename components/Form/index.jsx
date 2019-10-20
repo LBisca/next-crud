@@ -14,8 +14,16 @@ class FormIndex extends Component {
         .min(2, 'Nome muito curto!')
         .max(50, 'Nome muito comprido!')
         .required('Este campo é obrigatório'),
-      cpf: Yup.string().required('Este campo é obrigatório'),
-      birthDate: Yup.string().required('Este campo é obrigatório'),
+      cpf: Yup.string()
+        .matches(/[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}/, 'CPF inválido')
+        .min(8)
+        .required('Este campo é obrigatório'),
+      birthDate: Yup.string()
+        .matches(
+          /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/,
+          'Data inválida!'
+        )
+        .required('Este campo é obrigatório'),
       email: Yup.string()
         .email('Email inválido!')
         .required('Este campo é obrigatório')

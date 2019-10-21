@@ -70,7 +70,7 @@ class FormIndex extends Component {
      * @returns {Promise}
      */
     const onSubmit = (formData, actions) => {
-      // Simullating an HTTP request
+      // Simulating an HTTP request
       return new Promise((resolve, reject) => {
         try {
           setTimeout(() => {

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-access-state-in-setstate */
 import React, { Component } from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
@@ -76,7 +77,6 @@ class Home extends Component {
     const itemIndex = this.state.data.findIndex(
       element => element.id === item.id
     );
-    // eslint-disable-next-line react/no-access-state-in-setstate
     const newData = [...this.state.data];
     let data = { ...newData[itemIndex] };
     data = item;
@@ -95,10 +95,9 @@ class Home extends Component {
         const itemIndex = this.state.data.findIndex(
           element => element.id === itemId
         );
-        // eslint-disable-next-line react/no-access-state-in-setstate
         const newData = [...this.state.data];
         newData.splice(itemIndex, 1);
-        // Simullating HTTP request timeout
+        // Simulating HTTP request timeout
         setTimeout(() => {
           this.setState({ data: newData });
           resolve(true);

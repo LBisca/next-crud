@@ -4,6 +4,11 @@
   width: 100%;
 
   @media screen and (min-width: 1024px) {
+    max-width: 1000px;
+    padding: 45px 0px;
+  }
+
+  @media screen and (min-width: 1240px) {
     max-width: 1200px;
     padding: 45px 0px;
   }
